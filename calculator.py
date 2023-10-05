@@ -18,7 +18,7 @@ def totalHours():
 print("For this pay period, you worked a total of " + str(totalHours()) + "hours! (accounts for overlap) ")
 
 lgAmount = lgHours * 20.00
-hgAmount = hgHours * 20.50
+hgAmount = (hgHours - overlapWSE) * 20.50
 wseAmount = wseHours * 21.50
 
 grossPay = (lgAmount + hgAmount + wseAmount)
@@ -32,3 +32,5 @@ print("The current federal income tax rate is " + fedTax + "%. ")
 netPay = grossPay - (grossPay * fedTaxVar)
 
 print("this pay period you netted: $" + str(netPay))
+
+print("Would you like to set a goal amount to make for this pay period?")
