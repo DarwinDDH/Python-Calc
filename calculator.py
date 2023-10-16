@@ -56,13 +56,8 @@ print("|------------------------------------------------------------------------
 print("|    WSE   | $21.5/hr |      " + str(wseHours) + "     |    $" + str(wseAmount) + "     |     $" + str(wseTax) + "     |   $" + str(wseNet) + "  |")
 print("|---------------------------------------------------------------------------------|")
 
-
-
-
-
-
-
-
-
-
-
+goalCalc = input("Would you like to figure out how many more hours you must work in order to reach a certain amount of money? Y / N ")
+if goalCalc == "Y" or goalCalc == "y" or goalCalc == "yes" or goalCalc == "Yes":
+    goalAmount = int(input("What is your desired goal amount to make this pay period?: "))
+else: 
+    print("Okay, look forward to making $" + str(netPay) + " this pay period!")
