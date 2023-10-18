@@ -1,5 +1,14 @@
 import math
 
+#Goal Amount Calculator function
+def goalAmountCalc(num):
+    print("In order to reach $" + str(num) + ", you need this many more hours: ")
+     
+
+
+
+
+#End goal mamount calculator function
 lgHours = int(input("First question: how many hours did you work as a lifeguard this pay period? "))
 print("Total LG Hours: " + str(lgHours))
 
@@ -59,5 +68,10 @@ print("|------------------------------------------------------------------------
 goalCalc = input("Would you like to figure out how many more hours you must work in order to reach a certain amount of money? Y / N ")
 if goalCalc == "Y" or goalCalc == "y" or goalCalc == "yes" or goalCalc == "Yes":
     goalAmount = int(input("What is your desired goal amount to make this pay period?: "))
+    goalAmountCalc(goalAmount)
+
+
+
+
 else: 
     print("Okay, look forward to making $" + str(netPay) + " this pay period!")
