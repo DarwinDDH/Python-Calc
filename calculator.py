@@ -4,11 +4,18 @@ import math
 def goalAmountCalc(num):
     #LG Hours
     goalAmountLeft = num - netPay
-    remainder = goalAmountLeft + (goalAmountLeft * fedTaxVar) 
-    lgHourGoal = remainder / 20.0
+    lgHourGoal = round((goalAmountLeft / lgPay) + .5, 0)
+    hgHourGoal = round((goalAmountLeft / hgPay) + .5, 0)
+    wseHourGoal = round((goalAmountLeft / wsePay) + .5, 0)
+    lgGoalAmount = (lgHourGoal * lgPay) + netPay 
+    hgGoalAmount = (hgHourGoal * hgPay) + netPay
+    wseGoalAmount = (wseHourGoal * wsePay) + netPay
 
-    print("In order to reach $" + str(num) + ", you need this many more hours as a LG: " + str(lgHourGoal))
-     
+    print("In order to reach $" + str(num) + ", you need to work around this many more hours as a: \nLG: " + str(lgHourGoal) + "\nHG:" + str(hgHourGoal) + "\nWSE:" + str(wseHourGoal))
+    print("-----------------------------------------------------")
+    print("| Position | Goal Amount | Hours needed | Net Total |")
+    print("-----------------------------------------------------")
+    print("|    LG    |    " + str(num) + "   |     " + str(lgHourGoal) + "     |  " + str(lgGoalAmount) + "  |") 
 
 
 
@@ -32,9 +39,14 @@ def totalHours():
 
 print("For this pay period, you worked a total of " + str(totalHours()) + "hours! (accounts for overlap) ")
 
-lgAmount = lgHours * 20.80
-hgAmount = hgHours * 20.50
-wseAmount = wseHours * 21.50
+lgPay = 20.80
+hgPay = 21.30
+wsePay = 22.30
+
+
+lgAmount = lgHours * lgPay
+hgAmount = hgHours * hgPay
+wseAmount = wseHours * wsePay
 
 grossPay = (lgAmount + hgAmount + wseAmount)
 print("This pay period you grossed: $" + str(grossPay))
