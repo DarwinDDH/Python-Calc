@@ -3,19 +3,26 @@ import math
 #Goal Amount Calculator function
 def goalAmountCalc(num):
     #LG Hours
+    #goalAmountLeft: Takes the desired goal amount and subtracts net amount from calculator
     goalAmountLeft = num - netPay
-    lgHourGoal = round((goalAmountLeft / lgPay) + .5, 0)
-    hgHourGoal = round((goalAmountLeft / hgPay) + .5, 0)
-    wseHourGoal = round((goalAmountLeft / wsePay) + .5, 0)
-    lgGoalAmount = (lgHourGoal * lgPay) + netPay 
-    hgGoalAmount = (hgHourGoal * hgPay) + netPay
-    wseGoalAmount = (wseHourGoal * wsePay) + netPay
+    #lgHourGoal: Takes the amount leftover, adds the taxable amount, and then divides it by the payrate in order to find hours (rounded to nearest hour) required to reach goal 
+    lgHourGoal = round((((goalAmountLeft + (goalAmountLeft * fedTaxVar)) / lgPay)) + .5, 0)
+    hgHourGoal = round((((goalAmountLeft + (goalAmountLeft * fedTaxVar)) / hgPay)) + .5, 0)
+    wseHourGoal = round((((goalAmountLeft + (goalAmountLeft * fedTaxVar)) / wsePay)) + .5, 0)
+    lgGoalAmount = round((((lgHourGoal * lgPay)-(lgHourGoal * lgPay * fedTaxVar)) + netPay), 2) 
+    hgGoalAmount = round((((hgHourGoal * hgPay)-(hgHourGoal * hgPay * fedTaxVar)) + netPay), 2) 
+    wseGoalAmount = round((((wseHourGoal * wsePay)-(wseHourGoal * wsePay * fedTaxVar)) + netPay), 2) 
 
     print("In order to reach $" + str(num) + ", you need to work around this many more hours as a: \nLG: " + str(lgHourGoal) + "\nHG:" + str(hgHourGoal) + "\nWSE:" + str(wseHourGoal))
     print("-----------------------------------------------------")
     print("| Position | Goal Amount | Hours needed | Net Total |")
     print("-----------------------------------------------------")
-    print("|    LG    |    " + str(num) + "   |     " + str(lgHourGoal) + "     |  " + str(lgGoalAmount) + "  |") 
+    print("|    LG    |    " + str(num) + "   |     " + str(lgHourGoal) + "     |  " + str(lgGoalAmount) + "  |")
+    print("-----------------------------------------------------")
+    print("|    HG    |    " + str(num) + "   |     " + str(hgHourGoal) + "     |  " + str(hgGoalAmount) + "  |")
+    print("-----------------------------------------------------")
+    print("|   WSE    |    " + str(num) + "   |     " + str(wseHourGoal) + "     |  " + str(wseGoalAmount) + "  |")   
+    print("-----------------------------------------------------")
 
 
 
@@ -77,9 +84,9 @@ print("| Position | Pay Rate | Hours Worked | Gross Amount | Taxable Amount | Ne
 print("|---------------------------------------------------------------------------------|")
 print("|    LG    | $20.8/hr |      " + str(lgHours) + "    |    $" + str(lgAmount) + "     |     $" + str(lgTax) + "     |   $" + str(lgNet) + " |")
 print("|---------------------------------------------------------------------------------|")
-print("|    HG    | $20.5/hr |      " + str(hgHours) + "    |    $" + str(hgAmount) + "     |     $" + str(hgTax) + "     |   $" + str(hgNet) + " |")
+print("|    HG    | $21.3/hr |      " + str(hgHours) + "    |    $" + str(hgAmount) + "     |     $" + str(hgTax) + "     |   $" + str(hgNet) + " |")
 print("|---------------------------------------------------------------------------------|")
-print("|    WSE   | $21.5/hr |      " + str(wseHours) + "    |    $" + str(wseAmount) + "     |     $" + str(wseTax) + "     |   $" + str(wseNet) + " |")
+print("|    WSE   | $22.3/hr |      " + str(wseHours) + "    |    $" + str(wseAmount) + "     |     $" + str(wseTax) + "     |   $" + str(wseNet) + " |")
 print("|---------------------------------------------------------------------------------|")
 print("|          |  Total   |      " + str(totalHours()) + "    |    $" + str(grossPay) + "     |     $" + str(totalTax) + "     |   $" + str(netPay) + " |")
 
