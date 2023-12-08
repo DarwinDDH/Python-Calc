@@ -13,7 +13,7 @@ def goalAmountCalc(num):
     hgGoalAmount = round((((hgHourGoal * hgPay)-(hgHourGoal * hgPay * fedTaxVar)) + netPay), 2) 
     wseGoalAmount = round((((wseHourGoal * wsePay)-(wseHourGoal * wsePay * fedTaxVar)) + netPay), 2) 
 
-    print("In order to reach $" + str(num) + ", you need to work around this many more hours as a: \nLG: " + str(lgHourGoal) + "\nHG:" + str(hgHourGoal) + "\nWSE:" + str(wseHourGoal))
+    print("In order to reach $" + str(num) + ", you need to work around this many more hours: as a: ")
     print("-----------------------------------------------------")
     print("| Position | Goal Amount | Hours needed | Net Total |")
     print("-----------------------------------------------------")
@@ -40,6 +40,7 @@ print("Total WSE Hours: " + str(wseHours))
 overlapWSE = float(input("Do any of your WSE hours overlap on a LG/HG shift? If so, enter the amount, or put 0: "))
 print("Total overlap hours: " + str(overlapWSE))
 
+wseHours = (wseHours - overlapWSE)
 
 def totalHours():
     return (lgHours + hgHours + wseHours  - overlapWSE)
